@@ -1,8 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplicatie_GuyJanssen_r0237357.Models
 {
+    [Table("Regisseur")]
     public class Regisseur
     {
         [Key]
@@ -17,5 +20,9 @@ namespace WebApplicatie_GuyJanssen_r0237357.Models
         public string GeboortePlaats { get; set; }
 
         public string GeboorteLand { get; set; }
+
+        //Navigation properties
+        
+        public List<FilmRegisseur> FilmRegisseurs { get; set; }
     }
 }
