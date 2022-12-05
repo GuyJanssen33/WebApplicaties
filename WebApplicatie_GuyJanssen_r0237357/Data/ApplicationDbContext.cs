@@ -35,7 +35,7 @@ namespace WebApplicatie_GuyJanssen_r0237357.Data
             modelBuilder.Entity<Acteur>().ToTable("Acteur");
                 
             modelBuilder.Entity<Film>().ToTable("Film");
-            modelBuilder.Entity<Gebruiker>().ToTable("Gebruiker");
+            
             modelBuilder.Entity<Producent>().ToTable("Producent");
             modelBuilder.Entity<Regisseur>().ToTable("Regisseur");
             modelBuilder.Entity<FilmActeur>().ToTable("FilmActeur");

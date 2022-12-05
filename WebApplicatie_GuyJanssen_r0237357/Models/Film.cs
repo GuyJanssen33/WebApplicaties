@@ -21,15 +21,15 @@ namespace WebApplicatie_GuyJanssen_r0237357.Models
         [Required]
         public string Schrijver { get; set; }
 
-        public string Samenvatting { get; set; }
+        public string? Samenvatting { get; set; }
 
-        [Required]
-        public DateTime ReleaseDatum { get; set; }
+        
+        public DateTime? ReleaseDatum { get; set; }
 
         [Required]
         public string Verdeler { get; set; }
 
-        public string Rating { get; set; }
+        public string? Rating { get; set; }
         
 
         //Navigation Properties

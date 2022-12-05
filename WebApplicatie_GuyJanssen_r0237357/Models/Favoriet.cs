@@ -8,7 +8,9 @@ namespace WebApplicatie_GuyJanssen_r0237357.Models
     {
         [Key]
         public int FavorietId { get; set; }
+        [Required]
         public int FilmId { get; set; }
+        [Required]
         public int GebruikerId { get; set; }
 
         //Navigation Properties
