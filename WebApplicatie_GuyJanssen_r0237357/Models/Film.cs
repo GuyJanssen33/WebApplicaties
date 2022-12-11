@@ -30,7 +30,9 @@ namespace WebApplicatie_GuyJanssen_r0237357.Models
         public string Verdeler { get; set; }
 
         public string? Rating { get; set; }
-        
+
+        public string? Poster { get; set; }
+
 
         //Navigation Properties
 

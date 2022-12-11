@@ -76,3 +76,12 @@ body {
 header {
     background-color:green;
 }
+
+naviBar {
+    background-color: green;
+}
+
+.image {
+    height: 200px;
+    width: 175px;
+}

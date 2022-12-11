@@ -16,7 +16,7 @@ namespace WebApplicatie_GuyJanssen_r0237357.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("Films")
-                .HasAnnotation("ProductVersion", "3.1.27")
+                .HasAnnotation("ProductVersion", "3.1.30")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -291,6 +291,9 @@ namespace WebApplicatie_GuyJanssen_r0237357.Data.Migrations
 
                     b.Property<string>("Lengte")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Poster")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rating")

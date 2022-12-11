@@ -9,8 +9,10 @@ namespace WebApplicatie_GuyJanssen_r0237357.Models
 
         [Key]
         public int FilmRegisseurId { get; set; }
-        public int FilmId { get; set; }
-        public int RegisseurId { get; set; }
+		[Required]
+		public int FilmId { get; set; }
+		[Required]
+		public int RegisseurId { get; set; }
 
         //Navigation Properties
         [Required]

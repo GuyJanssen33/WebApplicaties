@@ -9203,11 +9203,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\Project\\WebApplicatie_GuyJanssen_r0237357\\WebApplicatie_GuyJanssen_r0237357\\WebApplicatie_GuyJanssen_r0237357.csproj",
+      "projectUniqueName": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\WebApplicatie_GuyJanssen_r0237357\\WebApplicatie_GuyJanssen_r0237357\\WebApplicatie_GuyJanssen_r0237357.csproj",
       "projectName": "WebApplicatie_GuyJanssen_r0237357",
-      "projectPath": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\Project\\WebApplicatie_GuyJanssen_r0237357\\WebApplicatie_GuyJanssen_r0237357\\WebApplicatie_GuyJanssen_r0237357.csproj",
+      "projectPath": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\WebApplicatie_GuyJanssen_r0237357\\WebApplicatie_GuyJanssen_r0237357\\WebApplicatie_GuyJanssen_r0237357.csproj",
       "packagesPath": "C:\\Users\\guyja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\Project\\WebApplicatie_GuyJanssen_r0237357\\WebApplicatie_GuyJanssen_r0237357\\obj\\",
+      "outputPath": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\WebApplicatie_GuyJanssen_r0237357\\WebApplicatie_GuyJanssen_r0237357\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\guyja\\AppData\\Roaming\\NuGet\\NuGet.Config",
