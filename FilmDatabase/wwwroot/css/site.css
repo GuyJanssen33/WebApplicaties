@@ -24,12 +24,16 @@ a {
   border-color: #1861ac;
 }
 
-/*header {
-    background-color: lightblue;
-    color: red;
-}*/
+
 .mystyle {
-    background-color: lightblue;
+    background-color: red;
+}
+
+.reOutline {
+  
+    
+    color:red;
+    background-color:red;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {

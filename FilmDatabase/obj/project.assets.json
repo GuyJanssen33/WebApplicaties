@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\Project2\\FilmDatabase\\FilmDatabase.csproj",
+      "projectUniqueName": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\Project\\WebApplicatie_GuyJanssen_r0237357\\WebApplicaties\\FilmDatabase\\FilmDatabase.csproj",
       "projectName": "FilmDatabase",
-      "projectPath": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\Project2\\FilmDatabase\\FilmDatabase.csproj",
+      "projectPath": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\Project\\WebApplicatie_GuyJanssen_r0237357\\WebApplicaties\\FilmDatabase\\FilmDatabase.csproj",
       "packagesPath": "C:\\Users\\guyja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\Project2\\FilmDatabase\\obj\\",
+      "outputPath": "C:\\Users\\guyja\\Documents\\MEGAsync\\sch_prog\\Webapplicaties\\Project\\WebApplicatie_GuyJanssen_r0237357\\WebApplicaties\\FilmDatabase\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\guyja\\AppData\\Roaming\\NuGet\\NuGet.Config",
