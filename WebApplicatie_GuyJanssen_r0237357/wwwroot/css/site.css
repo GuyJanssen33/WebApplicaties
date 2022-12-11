@@ -14,6 +14,15 @@ a {
   background-color:blue;
 }
 
+.top-background{
+    background-color:blue;
+}
+
+.det-btn {
+    background-color: blue;
+    color: white;   
+}
+
 .btn-primary {
   color:white ;
   background-color: blue;
@@ -35,6 +44,13 @@ html {
   html {
     font-size: 16px;
   }
+}
+
+.title {
+    color: midnightblue;
+    text-align: center;
+    text-shadow: 2px 2px 5px black;
+    
 }
 
 .border-top {
