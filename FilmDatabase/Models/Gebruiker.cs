@@ -1,15 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FilmDatabase.Models
 {
-	public class Gebruiker
-	{
-		public int GebruikerId { get; set; }
-		public string Geslacht { get; set; }
-
-		
-		public List<Favoriet> favoriet { get; set; }
+	
+		[Table("Gebruiker")]
+		public class Gebruiker : IdentityUser
+		{
 
 
-	}
+			public string Voornaam { get; set; }
+			public string Familienaam { get; set; }
+			public bool Geslacht { get; set; }
+
+			//Navigation Properties
+			public List<Favoriet> Favorieten { get; set; }
+
+
+		}
 }

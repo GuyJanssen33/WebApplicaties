@@ -82,3 +82,5 @@ C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_
 C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\FilmDatabase.pdb
 C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\FilmDatabase.genruntimeconfig.cache
 C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\FilmDatabase.csproj.CopyComplete
+C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\Razor\Views\Favorieten\Index.cshtml.g.cs
+C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\Razor\Views\FilmToevoegen\Index.cshtml.g.cs

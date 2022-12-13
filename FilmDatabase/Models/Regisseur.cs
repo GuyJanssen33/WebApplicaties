@@ -1,17 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace FilmDatabase.Models
 {
-	public class Regisseur
-	{
-		public int RegisseurId { get; set; }
-		public string Voornaam { get; set; }
-		public string Achternaam { get; set; }
-		public string GeboorteDatum { get; set; }
-		public string GeboortePlaats { get; set; }
-		public string GeboorteLand { get; set; }
+	
+		[Table("Regisseur")]
+		public class Regisseur
+		{
+			[Key]
+			public int RegisseurId { get; set; }
 
+			public string? Voornaam { get; set; }
 
-		public List<FilmRegisseur> FilmRegisseurs { get; set; }
-	}
+			public string? Familienaam { get; set; }
+
+			public DateTime? GeboorteDatum { get; set; }
+
+			public string? GeboortePlaats { get; set; }
+
+			public string? GeboorteLand { get; set; }
+
+			//Navigation properties
+
+			public List<FilmRegisseur> FilmRegisseurs { get; set; }
+		}
+	
 }

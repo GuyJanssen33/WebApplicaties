@@ -1,12 +1,22 @@
-﻿namespace FilmDatabase.Models
-{
-	public class Favoriet
-	{
-		public int FavorietId { get; set; }
-		public int FilmId { get; set; }
-		public int GebruikerId { get; set; }
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-		public Film Film { get; set; }
-		public Gebruiker Gebruiker { get; set; }
-	}
+namespace FilmDatabase.Models
+{
+	
+		[Table("Favoriet")]
+		public class Favoriet
+		{
+			[Key]
+			public int FavorietId { get; set; }
+			[Required]
+			public int FilmId { get; set; }
+			[Required]
+			public int GebruikerId { get; set; }
+
+			//Navigation Properties
+			public Gebruiker Gebruiker { get; set; }
+			public Film Film { get; set; }
+		}
+	
 }
