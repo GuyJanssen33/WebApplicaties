@@ -2,6 +2,7 @@ using FilmDatabase.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +30,27 @@ namespace FilmDatabase
 			services.AddDbContext<FilmdatabaseDbContext>(options =>
 			
 				options.UseSqlServer(Configuration.GetConnectionString("LocalDBConnection")));
-			
+			services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<FilmdatabaseDbContext>();
+			services.AddControllersWithViews();
+			services.AddRazorPages();
+			services.Configure<IdentityOptions>(options =>
+			{
+				options.Password.RequireDigit = true;
+				options.Password.RequireLowercase = true;
+				options.Password.RequireNonAlphanumeric = false;
+				options.Password.RequireUppercase = true;
+				options.Password.RequiredLength = 6;
+				options.Password.RequiredUniqueChars = 1;
+
+
+				options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+				options.Lockout.MaxFailedAccessAttempts = 3;
+				options.Lockout.AllowedForNewUsers = true;
+
+				options.User.AllowedUserNameCharacters =
+				"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+				options.User.RequireUniqueEmail = true;
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +71,7 @@ namespace FilmDatabase
 
 			app.UseRouting();
 
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
@@ -57,8 +79,9 @@ namespace FilmDatabase
 				endpoints.MapControllerRoute(
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");
-			
-			
+				endpoints.MapRazorPages();
+
+
 			});
 		}
 	}

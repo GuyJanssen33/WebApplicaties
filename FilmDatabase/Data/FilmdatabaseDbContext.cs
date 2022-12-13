@@ -1,11 +1,12 @@
 ﻿using FilmDatabase.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 
 namespace FilmDatabase.Data
 {
-	public class FilmdatabaseDbContext : DbContext
+	public class FilmdatabaseDbContext : IdentityDbContext
 	{
 		public FilmdatabaseDbContext(DbContextOptions<FilmdatabaseDbContext> options)
 			: base(options)
