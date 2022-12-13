@@ -5,7 +5,7 @@ using System.Reflection.Emit;
 
 namespace FilmDatabase.Data
 {
-	public class FilmdatabaseDbContext
+	public class FilmdatabaseDbContext : DbContext
 	{
 		public FilmdatabaseDbContext(DbContextOptions<FilmdatabaseDbContext> options)
 			: base(options)
