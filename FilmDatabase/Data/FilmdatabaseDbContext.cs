@@ -1,4 +1,5 @@
-﻿using FilmDatabase.Models;
+﻿using FilmDatabase.Areas.Identity.Data;
+using FilmDatabase.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Reflection.Emit;
 
 namespace FilmDatabase.Data
 {
-	public class FilmdatabaseDbContext : IdentityDbContext
+	public class FilmdatabaseDbContext : IdentityDbContext<CustomUser>
 	{
 		public FilmdatabaseDbContext(DbContextOptions<FilmdatabaseDbContext> options)
 			: base(options)

@@ -4,14 +4,16 @@ using FilmDatabase.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FilmDatabase.Migrations
 {
     [DbContext(typeof(FilmdatabaseDbContext))]
-    partial class FilmdatabaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221213120950_CustomUserData")]
+    partial class CustomUserData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,6 +41,9 @@ namespace FilmDatabase.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Familienaam")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("GeboorteDatum")
                         .HasColumnType("datetime2");
 
@@ -47,9 +52,6 @@ namespace FilmDatabase.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Naam")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(256)")
@@ -77,6 +79,9 @@ namespace FilmDatabase.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
+
+                    b.Property<string>("Voornaam")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

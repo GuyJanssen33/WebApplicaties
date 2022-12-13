@@ -1,3 +1,4 @@
+using FilmDatabase.Areas.Identity.Data;
 using FilmDatabase.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +31,9 @@ namespace FilmDatabase
 			services.AddDbContext<FilmdatabaseDbContext>(options =>
 			
 				options.UseSqlServer(Configuration.GetConnectionString("LocalDBConnection")));
-			services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<FilmdatabaseDbContext>();
+			services.AddDefaultIdentity<CustomUser>()
+					.AddRoles<IdentityRole>()
+					.AddEntityFrameworkStores<FilmdatabaseDbContext>();
 			services.AddControllersWithViews();
 			services.AddRazorPages();
 			services.Configure<IdentityOptions>(options =>
