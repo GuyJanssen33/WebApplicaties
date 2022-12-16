@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css?version=1" />
 </head>
 <body>
-    <header style="background-color:red">
+    <header style="background-color:lightblue">
         <nav class="navbar navbar-expand-lg bg-light mystyle">
             <div class="container-fluid ">
                 <a class="navbar-brand" href="#">Navbar scroll</a>
@@ -16,12 +16,13 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarScroll">
+                    <partial name="_LoginPartial"/>
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" asp-action="Index" asp-controller="Home" asp-area="" aria-current="page">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" asp-action="Index" asp-controller="Details" asp-area="">Details</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
