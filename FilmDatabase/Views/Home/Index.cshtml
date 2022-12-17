@@ -1,23 +1,29 @@
-﻿@{
-	ViewData["Title"] = "Home Page";
+﻿@model FilmDatabase.ViewModels.FilmListViewModel;
+@{
+	ViewData["Title"] = "Filmdatabase Guy";
 }
 
-<h1 class="title">FilmDatabase Guy</h1>
+<div class="container mystyle">
+	<h1 class="title">@ViewData["Title"]</h1>
 
-<table>
-	<tr>
-		<td>
-			<div class="card" style="width: 18rem;">
-				<img src="~/images/BlackPanther.jpg" class="card-img-top" alt="...">
-				<div class="card-body cardbutton">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					<div class="cardbutton">
-						<a class="btn btn-primary cardbutton" asp-area="" asp-controller="Details" asp-action="Index">Details</a>
+	<div class="row">
+
+		@foreach (var film in Model.Films)
+		{
+
+			<div class="col-md-4">
+				<div class="card" style="width: 18rem;">
+					<img src="@film.Poster" class="card-img-top" alt="@film.Poster">
+					<div class="card-body cardbutton">
+						<h5 class="card-title">@film.Titel</h5>
+						<p class="card-text">@film.Samenvatting</p>
+						<div class="cardbutton">
+							<a class="btn btn-primary cardbutton" asp-area="" asp-controller="Details" asp-action="Index" asp-route-id="@film.FilmId">Details  </a>
+						</div>
 					</div>
 				</div>
 			</div>
-		</td>
+		}
 
-	</tr>
-</table>
+	</div>
+</div>

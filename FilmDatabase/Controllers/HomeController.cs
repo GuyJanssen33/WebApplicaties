@@ -1,4 +1,6 @@
-﻿using FilmDatabase.Models;
+﻿using FilmDatabase.Data;
+using FilmDatabase.Models;
+using FilmDatabase.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,16 +14,27 @@ namespace FilmDatabase.Controllers
 	public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
+		private readonly FilmdatabaseDbContext _context;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(ILogger<HomeController> logger, FilmdatabaseDbContext context)
 		{
 			_logger = logger;
+			_context = context;
 		}
+		
 
 		public IActionResult Index()
+			
 		{
-			return View();
+			FilmListViewModel vm = new FilmListViewModel()
+			{
+				Films = _context.Film.ToList()
+			};
+			return View(vm);
 		}
+			
+			
+		
 
 		public IActionResult Privacy()
 		{
