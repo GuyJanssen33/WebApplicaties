@@ -1,5 +1,67 @@
-﻿@{
-	ViewData["Title"] = "Details";
+﻿@model FilmDatabase.ViewModels.DetailsViewModel
+@{
+	ViewData["Title"] = @Model.Titel;
 }
+<div class="container mystyle">
+	<h1>@ViewData["Title"]</h1>
+	<img src="@Model.Poster">
 
-<h2>Dit is de details pagina</h2>
+	<h3>Release datum: @Model.ReleaseDatum</h3>
+
+	<h3>Genre: @Model.Genre</h3>
+
+	<h3>Verdeler: @Model.Verdeler</h3>
+
+	<h3>Lengte: @Model.Lengte</h3>
+
+	<h3>
+		Acteurs:
+		@foreach (var acteur in Model.Acteurs)
+		{
+			<li>@acteur.Voornaam @acteur.Familienaam</li>
+		}
+
+	</h3>
+
+	<h3>
+		Producent:
+		@foreach (var producent in Model.Producenten)
+		{
+			<li>@producent.Voornaam @producent.Familienaam</li>
+		}
+	</h3>
+
+	<h3>
+		Regisseur:
+		@foreach (var regisseur in Model.Regisseurs)
+		{
+			<li>@regisseur.Voornaam @regisseur.Familienaam</li>
+		}
+	</h3>
+
+	<h3>Rating: @Model.Rating</h3>
+
+	<h3>Schrijver: @Model.Schrijver</h3>
+
+	<h3>
+		
+		@{
+			var samenvatting = "";
+		}
+		@if (!string.IsNullOrWhiteSpace(@Model.Samenvatting))
+		{
+
+			samenvatting = Model.Samenvatting;
+
+		}
+		else
+		{
+			samenvatting = "Geen samenvatting beschikbaar";
+		}
+		Samenvatting: @samenvatting;
+		
+	</h3>
+
+</div>
+
+
