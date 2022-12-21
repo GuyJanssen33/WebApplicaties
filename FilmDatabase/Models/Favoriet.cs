@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using FilmDatabase.Areas.Identity.Data;
 
 namespace FilmDatabase.Models
 {
@@ -15,7 +16,7 @@ namespace FilmDatabase.Models
 			public int GebruikerId { get; set; }
 
 			//Navigation Properties
-			public Gebruiker Gebruiker { get; set; }
+			public CustomUser CustomUser { get; set; }
 			public Film Film { get; set; }
 		}
 	

@@ -17,7 +17,8 @@ namespace FilmDatabase.ViewModels
         public string? Rating { get; set; }
         public string? Poster { get; set; }
 
-        public List<Acteur> Acteurs { get; set; }
+		public List<Film> Films { get; set; }
+		public List<Acteur> Acteurs { get; set; }
 		public List<Regisseur> Regisseurs { get; set; }
 		public List<Producent> Producenten { get; set; }
 		public List<FilmActeur> FilmActeurs { get; set; }

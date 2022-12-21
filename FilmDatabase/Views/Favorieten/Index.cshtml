@@ -1,5 +1,34 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model FilmDatabase.ViewModels.FavorietenViewModel
 @{
+	ViewData["Title"] = "Mijn Favorieten";
 }
+
+<div class="container mystyle">
+	<h1 class="title">@ViewData["Title"]</h1>
+
+	<div class="row">
+
+		@Model.Films = Model.Filmp.ToList()
+
+		@foreach (var film in Model.Films)
+		{
+
+			<div class="col-md-4">
+				<div class="card" style="width: 18rem; margin-bottom:5px;">
+					<img src="@film.Poster" class="card-img-top" alt="@film.Poster">
+					<div class="card-body cardbutton">
+						<h5 class="card-title">@film.Titel</h5>
+						<p class="card-text">@film.Samenvatting</p>
+						<div class="cardbutton">
+							<a class="btn btn-primary cardbutton" asp-area="" asp-controller="Details" asp-action="Index" asp-route-id="@film.FilmId">Details  </a>
+						</div>
+						<div class="cardbutton">
+							<a class="btn btn-warning cardbutton" asp-area="" asp-controller="Favorieten" asp-action="Index" asp-route-id="@film.FilmId">Add to Favorites</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+</div>
+</div>

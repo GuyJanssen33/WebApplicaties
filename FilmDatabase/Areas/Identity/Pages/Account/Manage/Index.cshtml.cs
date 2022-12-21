@@ -46,19 +46,21 @@ namespace FilmDatabase.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-			var Naam = await Task.FromResult(user.Naam);
-			var GeboorteDatum = await Task.FromResult(user.GeboorteDatum);
+            var Voornaam = await Task.FromResult(user.Voornaam);
+            var Familienaam = await Task.FromResult(user.Familienaam);
+            var GeboorteDatum = await Task.FromResult(user.Geboortedatum);
             var datum = new DateTime(1970, 1, 1);
 
-			int res = DateTime.Compare(datum, GeboorteDatum);
-            if (res <0)
+            int res = DateTime.Compare(datum, GeboorteDatum.Value)
+            ;
+            if (res < 0)
             {
                 GeboorteDatum = datum;
             }
 
 
 
-			Username = userName;
+            Username = userName;
 
             Input = new InputModel
             {
@@ -102,8 +104,8 @@ namespace FilmDatabase.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
-			user.Naam = Input.Naam;
-			user.GeboorteDatum = Input.GeboorteDatum;
+			//user.Naam = Input.Naam;
+			//user.GeboorteDatum = Input.GeboorteDatum;
 
 
 			await _userManager.UpdateAsync(user);

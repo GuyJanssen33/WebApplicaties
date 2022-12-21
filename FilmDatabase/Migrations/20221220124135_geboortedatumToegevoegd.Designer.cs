@@ -4,14 +4,16 @@ using FilmDatabase.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FilmDatabase.Migrations
 {
     [DbContext(typeof(FilmdatabaseDbContext))]
-    partial class FilmdatabaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221220124135_geboortedatumToegevoegd")]
+    partial class geboortedatumToegevoegd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,20 +41,17 @@ namespace FilmDatabase.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Familienaam")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("Geboortedatum")
+                    b.Property<DateTime>("GeboorteDatum")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("Geslacht")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Naam")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(256)")
@@ -80,9 +79,6 @@ namespace FilmDatabase.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Voornaam")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -131,20 +127,20 @@ namespace FilmDatabase.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CustomUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("FilmId")
                         .HasColumnType("int");
 
                     b.Property<int>("GebruikerId")
                         .HasColumnType("int");
 
+                    b.Property<string>("GebruikerId1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("FavorietId");
 
-                    b.HasIndex("CustomUserId");
-
                     b.HasIndex("FilmId");
+
+                    b.HasIndex("GebruikerId1");
 
                     b.ToTable("Favoriet");
                 });
@@ -261,6 +257,70 @@ namespace FilmDatabase.Migrations
                     b.HasIndex("RegisseurId");
 
                     b.ToTable("FilmRegisseur");
+                });
+
+            modelBuilder.Entity("FilmDatabase.Models.Gebruiker", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Familienaam")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Geboortedatum")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Geslacht")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Voornaam")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Gebruiker");
                 });
 
             modelBuilder.Entity("FilmDatabase.Models.Producent", b =>
@@ -454,15 +514,15 @@ namespace FilmDatabase.Migrations
 
             modelBuilder.Entity("FilmDatabase.Models.Favoriet", b =>
                 {
-                    b.HasOne("FilmDatabase.Areas.Identity.Data.CustomUser", "CustomUser")
-                        .WithMany("Favorieten")
-                        .HasForeignKey("CustomUserId");
-
                     b.HasOne("FilmDatabase.Models.Film", "Film")
                         .WithMany("Favorieten")
                         .HasForeignKey("FilmId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("FilmDatabase.Models.Gebruiker", "Gebruiker")
+                        .WithMany("Favorieten")
+                        .HasForeignKey("GebruikerId1");
                 });
 
             modelBuilder.Entity("FilmDatabase.Models.FilmActeur", b =>

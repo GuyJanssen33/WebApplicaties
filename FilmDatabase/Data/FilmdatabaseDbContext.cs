@@ -20,7 +20,7 @@ namespace FilmDatabase.Data
 		public DbSet<FilmActeur> FilmActeur { get; set; }
 		public DbSet<FilmProducent> FilmProducent { get; set; }
 		public DbSet<FilmRegisseur> FilmRegisseur { get; set; }
-		public DbSet<Gebruiker> Gebruiker { get; set; }
+		
 		public DbSet<Producent> Producent { get; set; }
 		public DbSet<Regisseur> Regisseur { get; set; }
 

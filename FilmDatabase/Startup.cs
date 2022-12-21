@@ -42,7 +42,7 @@ namespace FilmDatabase
 				options.Password.RequireLowercase = true;
 				options.Password.RequireNonAlphanumeric = false;
 				options.Password.RequireUppercase = true;
-				options.Password.RequiredLength = 6;
+				options.Password.RequiredLength = 1;
 				options.Password.RequiredUniqueChars = 1;
 
 
@@ -57,7 +57,7 @@ namespace FilmDatabase
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
 		{
 			if (env.IsDevelopment())
 			{
@@ -83,9 +83,32 @@ namespace FilmDatabase
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");
 				endpoints.MapRazorPages();
-
-
 			});
+
+			CreateRoles(serviceProvider).Wait();
+		}
+
+		private async Task CreateRoles (IServiceProvider serviceProvider)
+		{
+			RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+			FilmdatabaseDbContext context = serviceProvider.GetRequiredService<FilmdatabaseDbContext>();
+
+			IdentityResult result;
+
+			bool rolecheck = await roleManager.RoleExistsAsync("user");
+			if (!rolecheck)
+			{
+				result = await roleManager.CreateAsync(new IdentityRole("user"));
+			}
+
+			rolecheck = await roleManager.RoleExistsAsync("admin");
+			if (!rolecheck)
+			{
+				result = await roleManager.CreateAsync(new IdentityRole("admin"));
+			}
+
+			context.SaveChanges();
+
 		}
 	}
 }
