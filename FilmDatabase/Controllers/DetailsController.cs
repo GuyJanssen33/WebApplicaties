@@ -1,4 +1,5 @@
 ﻿using FilmDatabase.Data;
+using FilmDatabase.Data.UnitOfWork;
 using FilmDatabase.Models;
 using FilmDatabase.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -10,15 +11,17 @@ namespace FilmDatabase.Controllers
 	public class DetailsController : Controller
 	{
 		private readonly FilmdatabaseDbContext _context;
+		private readonly IUnitOfWork _uow;
 
-		public DetailsController(FilmdatabaseDbContext context)
+		public DetailsController(FilmdatabaseDbContext context, IUnitOfWork uow)
 		{
 			_context = context;
+			_uow = uow;
 		}
 
 		public IActionResult Index(int id)
 		{
-			Film film =  _context.Film.Where(f => f.FilmId == id).FirstOrDefault();
+			Film film =  _uow.FilmRepository.GetById(id);
 
 			DetailsViewModel vm = new DetailsViewModel()
 			{

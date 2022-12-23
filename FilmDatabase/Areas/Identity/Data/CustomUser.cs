@@ -8,9 +8,9 @@ namespace FilmDatabase.Areas.Identity.Data
 {
 	public class CustomUser : IdentityUser
 	{
-		
-
-        [PersonalData]
+		//[Key]
+		//public int CustomUserId { get; set; }
+		[PersonalData]
         public string Voornaam { get; set; }
         [PersonalData]
         public string Familienaam { get; set; }
@@ -22,7 +22,7 @@ namespace FilmDatabase.Areas.Identity.Data
         public DateTime? Geboortedatum { get; set; }
 
 
-        //Navigation Properties
-        public List<Favoriet> Favorieten { get; set; }
+        ////Navigation Properties
+        //public List<Favoriet> Favorieten { get; set; }
     }
 }

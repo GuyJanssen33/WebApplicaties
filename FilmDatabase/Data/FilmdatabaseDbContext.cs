@@ -77,8 +77,19 @@ namespace FilmDatabase.Data
 				.HasForeignKey(fp => fp.RegisseurId)
 				.IsRequired();
 
+			modelBuilder.Entity<Favoriet>().ToTable("Favoriet");
 
+			modelBuilder.Entity<Favoriet>()
+				.HasOne<Film>(fa => fa.Films)
+				.WithMany(f => f.Favorieten)
+				.HasForeignKey(fa => fa.FilmId)
+				.IsRequired();
 
+			//modelBuilder.Entity<Favoriet>()
+			//	.HasOne<CustomUser>(u => u.CustomUsers)
+			//	.WithMany(f => f.Favorieten)
+			//	.HasForeignKey(f => f.CustomUserId)
+			//	.IsRequired();
 		}
 	}
 }

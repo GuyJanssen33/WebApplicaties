@@ -99,7 +99,7 @@ namespace FilmDatabase.Controllers
 		{
 			GrantPermissionsViewModel vm = new GrantPermissionsViewModel()
 			{
-				Gebruikers = new SelectList( _userManager.Users.ToList(), "id", "UserName"),
+				Gebruikers = new SelectList( _userManager.Users.ToList(), "Id", "UserName"),
 				Rollen = new SelectList(_roleManager.Roles.ToList(), "Id", "Name")
 			};
 			return View(vm);

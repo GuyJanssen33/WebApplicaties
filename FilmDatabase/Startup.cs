@@ -1,5 +1,8 @@
 using FilmDatabase.Areas.Identity.Data;
 using FilmDatabase.Data;
+using FilmDatabase.Data.Repository;
+using FilmDatabase.Data.UnitOfWork;
+using FilmDatabase.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +39,15 @@ namespace FilmDatabase
 					.AddEntityFrameworkStores<FilmdatabaseDbContext>();
 			services.AddControllersWithViews();
 			services.AddRazorPages();
+			services.AddScoped<IGenericRepository<Film>, GenericRepository<Film>>();			
+			services.AddScoped<IGenericRepository<Regisseur>, GenericRepository<Regisseur>>();
+			services.AddScoped<IGenericRepository<Acteur>, GenericRepository<Acteur>>();
+			services.AddScoped<IGenericRepository<FilmActeur>, GenericRepository<FilmActeur>>();			
+			services.AddScoped<IGenericRepository<FilmRegisseur>, GenericRepository<FilmRegisseur>>();
+			services.AddScoped<IGenericRepository<FilmProducent>, GenericRepository<FilmProducent>>();
+			services.AddScoped<IGenericRepository<Producent>, GenericRepository<Producent>>();
+			services.AddScoped<IGenericRepository<Favoriet>, GenericRepository<Favoriet>>();
+			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			services.Configure<IdentityOptions>(options =>
 			{
 				options.Password.RequireDigit = true;
