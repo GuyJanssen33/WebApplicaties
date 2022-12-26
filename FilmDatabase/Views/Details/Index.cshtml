@@ -2,11 +2,13 @@
 @{
 	ViewData["Title"] = @Model.Titel;
 }
-<div class="container mystyle">
+<div class="container">
 	<h1>@ViewData["Title"]</h1>
 	<img src="@Model.Poster">
 
 	<h3>Release datum: @Model.ReleaseDatum</h3>
+
+	<h3>Id: @Model.FilmId</h3>
 
 	<h3>Genre: @Model.Genre</h3>
 
@@ -16,26 +18,47 @@
 
 	<h3>
 		Acteurs:
-		@foreach (var acteur in Model.Acteurs)
+		@if (Model.Acteurs == null)
 		{
-			<li>@acteur.Voornaam @acteur.Familienaam</li>
+			<li>Er zijn nog geen acteurs toegevoegd voor deze film</li>
+		}
+		else
+		{
+			@foreach (var acteur in Model.Acteurs)
+			{
+				<li>@acteur.Voornaam @acteur.Familienaam</li>
+			}
 		}
 
 	</h3>
 
 	<h3>
 		Producent:
-		@foreach (var producent in Model.Producenten)
+		@if (Model.Producenten == null)
 		{
-			<li>@producent.Voornaam @producent.Familienaam</li>
+			<li>Er zijn nog geen producenten toegevoegd voor deze film</li>
+		}
+		else
+		{
+			@foreach (var producent in Model.Producenten)
+			{
+				<li>@producent.Voornaam @producent.Familienaam</li>
+			}
 		}
 	</h3>
 
 	<h3>
 		Regisseur:
-		@foreach (var regisseur in Model.Regisseurs)
+		@if (Model.Regisseurs == null)
 		{
-			<li>@regisseur.Voornaam @regisseur.Familienaam</li>
+			<li>Er zijn nog geen regisseurs toegevoegd voor deze film</li>
+		}
+		else
+		{
+			@foreach (var regisseur in Model.Regisseurs)
+			{
+				<li>@regisseur.Voornaam @regisseur.Familienaam</li>
+			}
 		}
 	</h3>
 
@@ -44,7 +67,7 @@
 	<h3>Schrijver: @Model.Schrijver</h3>
 
 	<h3>
-		
+
 		@{
 			var samenvatting = "";
 		}
@@ -59,8 +82,26 @@
 			samenvatting = "Geen samenvatting beschikbaar";
 		}
 		Samenvatting: @samenvatting;
-		
+
 	</h3>
+
+
+
+	@if (User.IsInRole("gebruiker"))
+	{
+		<div class="btn">
+			<a asp-action="EditFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Bewerk Film</a>
+		</div>
+	}
+	@if (User.IsInRole("admin"))
+	{
+		<div class="btn">
+			<a asp-action="EditFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Bewerk Film</a>
+		</div>
+		<div class="btn">
+			<a asp-action="DeleteFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Verwijder Film</a>
+		</div>
+	}
 
 </div>
 

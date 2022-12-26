@@ -8,14 +8,14 @@
 
 	
 
-	<div class="row">
+	@*<div class="row">
 
 		@Model.Favorieten = Model.Filmp.ToList()
 
 		@foreach (var film in Model.Favorieten)
 		{
 
-			@*<div class="col-md-4">
+			<div class="col-md-4">
 				<div class="card" style="width: 18rem; margin-bottom:5px;">
 					<img src="@film.Poster" class="card-img-top" alt="@film.Poster">
 					<div class="card-body cardbutton">
@@ -29,8 +29,8 @@
 						</div>
 					</div>
 				</div>
-			</div>*@
+			</div>
 		}
 
-</div>
+</div>*@
 </div>

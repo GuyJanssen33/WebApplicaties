@@ -7,7 +7,8 @@ namespace FilmDatabase.ViewModels
 {
     public class DetailsViewModel
     {
-        public string Titel { get; set; }
+		public int FilmId { get; set; }
+		public string Titel { get; set; }
         public string Genre { get; set; }
         public string Lengte { get; set; }
         public string Schrijver { get; set; }

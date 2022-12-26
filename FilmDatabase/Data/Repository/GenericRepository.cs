@@ -14,7 +14,7 @@ namespace FilmDatabase.Data.Repository
 
 		public void Create(TEntity entity)
 		{
-			throw new System.NotImplementedException();
+			_context.Set<TEntity>().Add(entity);
 		}
 
 		public void Delete(TEntity entity)
@@ -31,12 +31,13 @@ namespace FilmDatabase.Data.Repository
 		{
 			return _context.Set<TEntity>().Find(id);
 		}
-		
 
-		public void Save()
+		public TEntity GetLastEntry()
 		{
-			throw new System.NotImplementedException();
+			return _context.Set<TEntity>().OrderByDescending(x => x).FirstOrDefault();
 		}
+
+		
 
 		public void Update(TEntity entity)
 		{
