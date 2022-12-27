@@ -1,0 +1,22 @@
+﻿@model FilmDatabase.ViewModels.GebruikerDetailsViewModel
+
+@{
+	ViewData["Title"] = "Details";
+}
+
+<h1>@Model.Voornaam @Model.Familienaam</h1>
+
+<p>
+	Id: @Model.Id;
+
+</p>
+<p>
+	Gebruikersnaam: @Model.UserName;
+
+</p>
+<p>
+	Geboorte datum: @Model.Geboortedatum;
+
+</p>
+
+@Html.ActionLink("Terug", "Index", "Gebruiker")

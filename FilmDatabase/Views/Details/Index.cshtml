@@ -1,5 +1,108 @@
-﻿@{
-	ViewData["Title"] = "Details";
+﻿@model FilmDatabase.ViewModels.DetailsViewModel
+@{
+	ViewData["Title"] = @Model.Titel;
 }
+<div class="container">
+	<h1>@ViewData["Title"]</h1>
+	<img src="@Model.Poster">
 
-<h2>Dit is de details pagina</h2>
+	<h3>Release datum: @Model.ReleaseDatum</h3>
+
+	<h3>Id: @Model.FilmId</h3>
+
+	<h3>Genre: @Model.Genre</h3>
+
+	<h3>Verdeler: @Model.Verdeler</h3>
+
+	<h3>Lengte: @Model.Lengte</h3>
+
+	<h3>
+		Acteurs:
+		@if (Model.Acteurs == null)
+		{
+			<li>Er zijn nog geen acteurs toegevoegd voor deze film</li>
+		}
+		else
+		{
+			@foreach (var acteur in Model.Acteurs)
+			{
+				<li>@acteur.Voornaam @acteur.Familienaam</li>
+			}
+		}
+
+	</h3>
+
+	<h3>
+		Producent:
+		@if (Model.Producenten == null)
+		{
+			<li>Er zijn nog geen producenten toegevoegd voor deze film</li>
+		}
+		else
+		{
+			@foreach (var producent in Model.Producenten)
+			{
+				<li>@producent.Voornaam @producent.Familienaam</li>
+			}
+		}
+	</h3>
+
+	<h3>
+		Regisseur:
+		@if (Model.Regisseurs == null)
+		{
+			<li>Er zijn nog geen regisseurs toegevoegd voor deze film</li>
+		}
+		else
+		{
+			@foreach (var regisseur in Model.Regisseurs)
+			{
+				<li>@regisseur.Voornaam @regisseur.Familienaam</li>
+			}
+		}
+	</h3>
+
+	<h3>Rating: @Model.Rating</h3>
+
+	<h3>Schrijver: @Model.Schrijver</h3>
+
+	<h3>
+
+		@{
+			var samenvatting = "";
+		}
+		@if (!string.IsNullOrWhiteSpace(@Model.Samenvatting))
+		{
+
+			samenvatting = Model.Samenvatting;
+
+		}
+		else
+		{
+			samenvatting = "Geen samenvatting beschikbaar";
+		}
+		Samenvatting: @samenvatting;
+
+	</h3>
+
+
+
+	@if (User.IsInRole("gebruiker"))
+	{
+		<div class="btn">
+			<a asp-action="EditFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Bewerk Film</a>
+		</div>
+	}
+	@if (User.IsInRole("admin"))
+	{
+		<div class="btn">
+			<a asp-action="EditFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Bewerk Film</a>
+		</div>
+		<div class="btn">
+			<a asp-action="DeleteFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Verwijder Film</a>
+		</div>
+	}
+
+</div>
+
+
