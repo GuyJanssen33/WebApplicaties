@@ -20,7 +20,7 @@ namespace FilmDatabase.Data
 		public DbSet<FilmActeur> FilmActeur { get; set; }
 		public DbSet<FilmProducent> FilmProducent { get; set; }
 		public DbSet<FilmRegisseur> FilmRegisseur { get; set; }
-		public DbSet<Gebruiker> Gebruiker { get; set; }
+		
 		public DbSet<Producent> Producent { get; set; }
 		public DbSet<Regisseur> Regisseur { get; set; }
 
@@ -77,8 +77,19 @@ namespace FilmDatabase.Data
 				.HasForeignKey(fp => fp.RegisseurId)
 				.IsRequired();
 
+			modelBuilder.Entity<Favoriet>().ToTable("Favoriet");
 
+			modelBuilder.Entity<Favoriet>()
+				.HasOne<Film>(fa => fa.Films)
+				.WithMany(f => f.Favorieten)
+				.HasForeignKey(fa => fa.FilmId)
+				.IsRequired();
 
+			//modelBuilder.Entity<Favoriet>()
+			//	.HasOne<CustomUser>(u => u.CustomUsers)
+			//	.WithMany(f => f.Favorieten)
+			//	.HasForeignKey(f => f.CustomUserId)
+			//	.IsRequired();
 		}
 	}
 }

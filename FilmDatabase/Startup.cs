@@ -1,5 +1,8 @@
 using FilmDatabase.Areas.Identity.Data;
 using FilmDatabase.Data;
+using FilmDatabase.Data.Repository;
+using FilmDatabase.Data.UnitOfWork;
+using FilmDatabase.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,13 +39,22 @@ namespace FilmDatabase
 					.AddEntityFrameworkStores<FilmdatabaseDbContext>();
 			services.AddControllersWithViews();
 			services.AddRazorPages();
+			services.AddScoped<IGenericRepository<Film>, GenericRepository<Film>>();			
+			services.AddScoped<IGenericRepository<Regisseur>, GenericRepository<Regisseur>>();
+			services.AddScoped<IGenericRepository<Acteur>, GenericRepository<Acteur>>();
+			services.AddScoped<IGenericRepository<FilmActeur>, GenericRepository<FilmActeur>>();			
+			services.AddScoped<IGenericRepository<FilmRegisseur>, GenericRepository<FilmRegisseur>>();
+			services.AddScoped<IGenericRepository<FilmProducent>, GenericRepository<FilmProducent>>();
+			services.AddScoped<IGenericRepository<Producent>, GenericRepository<Producent>>();
+			services.AddScoped<IGenericRepository<Favoriet>, GenericRepository<Favoriet>>();
+			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			services.Configure<IdentityOptions>(options =>
 			{
 				options.Password.RequireDigit = true;
 				options.Password.RequireLowercase = true;
 				options.Password.RequireNonAlphanumeric = false;
 				options.Password.RequireUppercase = true;
-				options.Password.RequiredLength = 6;
+				options.Password.RequiredLength = 1;
 				options.Password.RequiredUniqueChars = 1;
 
 
@@ -57,7 +69,7 @@ namespace FilmDatabase
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
 		{
 			if (env.IsDevelopment())
 			{
@@ -83,9 +95,32 @@ namespace FilmDatabase
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");
 				endpoints.MapRazorPages();
-
-
 			});
+
+			CreateRoles(serviceProvider).Wait();
+		}
+
+		private async Task CreateRoles (IServiceProvider serviceProvider)
+		{
+			RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+			FilmdatabaseDbContext context = serviceProvider.GetRequiredService<FilmdatabaseDbContext>();
+
+			IdentityResult result;
+
+			bool rolecheck = await roleManager.RoleExistsAsync("user");
+			if (!rolecheck)
+			{
+				result = await roleManager.CreateAsync(new IdentityRole("user"));
+			}
+
+			rolecheck = await roleManager.RoleExistsAsync("admin");
+			if (!rolecheck)
+			{
+				result = await roleManager.CreateAsync(new IdentityRole("admin"));
+			}
+
+			context.SaveChanges();
+
 		}
 	}
 }

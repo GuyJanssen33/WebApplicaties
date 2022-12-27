@@ -7,7 +7,8 @@ namespace FilmDatabase.ViewModels
 {
     public class DetailsViewModel
     {
-        public string Titel { get; set; }
+		public int FilmId { get; set; }
+		public string Titel { get; set; }
         public string Genre { get; set; }
         public string Lengte { get; set; }
         public string Schrijver { get; set; }
@@ -17,7 +18,8 @@ namespace FilmDatabase.ViewModels
         public string? Rating { get; set; }
         public string? Poster { get; set; }
 
-        public List<Acteur> Acteurs { get; set; }
+		public List<Film> Films { get; set; }
+		public List<Acteur> Acteurs { get; set; }
 		public List<Regisseur> Regisseurs { get; set; }
 		public List<Producent> Producenten { get; set; }
 		public List<FilmActeur> FilmActeurs { get; set; }

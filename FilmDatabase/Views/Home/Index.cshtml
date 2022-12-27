@@ -3,7 +3,22 @@
 	ViewData["Title"] = "Filmdatabase Guy";
 }
 
+
 <div class="container mystyle">
+	<div class="text-center">
+		
+
+		@if (User.IsInRole("admin"))
+		{
+			<div class="btn">
+				<a type="button" asp-area="" asp-controller="FilmToevoegen" asp-action="Index" class="btn btn-primary">Film Toevoegen</a>
+			</div>
+		}
+
+	</div>
+
+
+
 	<h1 class="title">@ViewData["Title"]</h1>
 
 	<div class="row">
@@ -11,8 +26,8 @@
 		@foreach (var film in Model.Films)
 		{
 
-			<div class="col-md-4">
-				<div class="card" style="width: 18rem;">
+			<div class="col-md-4" style="margin-bottom:10px">
+				<div class="card" style="width: 18rem; height: 40rem">
 					<img src="@film.Poster" class="card-img-top" alt="@film.Poster">
 					<div class="card-body cardbutton">
 						<h5 class="card-title">@film.Titel</h5>
@@ -20,6 +35,12 @@
 						<div class="cardbutton">
 							<a class="btn btn-primary cardbutton" asp-area="" asp-controller="Details" asp-action="Index" asp-route-id="@film.FilmId">Details  </a>
 						</div>
+						@if (User.IsInRole("admin") || User.IsInRole("Gebruiker"))
+						{
+							<div class="cardbutton">
+								<a class="btn btn-warning cardbutton" asp-area="" asp-controller="Favorieten" asp-action="IndexAsync" asp-route-id="@film.FilmId">Favorieten </a>
+							</div>
+						}
 					</div>
 				</div>
 			</div>

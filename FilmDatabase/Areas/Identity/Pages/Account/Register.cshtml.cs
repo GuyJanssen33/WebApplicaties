@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using FilmDatabase.Models;
 
 namespace FilmDatabase.Areas.Identity.Pages.Account
 {
@@ -46,12 +47,29 @@ namespace FilmDatabase.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Email")]
-            public string Email { get; set; }
+			[Required]
+			[StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+			[Display(Name = "Voornaam")]
+			public string Voornaam { get; set; }
 
-            [Required]
+			[Required]
+			[StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+			[Display(Name = "Familienaam")]
+			public string Familienaam { get; set; }
+
+			[Required]
+            [DataType(DataType.Date)]
+            [Display(Name = "GeboorteDatum")]
+            public string GeboorteDatum { get; set; }
+
+			
+
+			[Required]
+			[EmailAddress]
+			[Display(Name = "Email")]
+			public string Email { get; set; }
+
+			[Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
@@ -75,7 +93,7 @@ namespace FilmDatabase.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new CustomUser { UserName = Input.Email, Email = Input.Email };
+                var user = new CustomUser { UserName = Input.Email, Email = Input.Email, Voornaam = Input.Voornaam, Familienaam = Input.Familienaam, Geboortedatum = Convert.ToDateTime(Input.GeboorteDatum) };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
