@@ -74,7 +74,7 @@ namespace FilmDatabase.Controllers
 			_uow.Save();
 
 
-			return View("~/Home/Index");
+			return RedirectToAction("Index", "Home", new { area = "" });
 		}
 	}
 }

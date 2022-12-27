@@ -16,6 +16,7 @@ namespace FilmDatabase.ViewModels
 		public string GeboortePlaats { get; set; }
 		public string GeboorteLand { get; set; }
 
+		public string Personage { get; set; }
 		public List<Film> Films { get; set; }
 		public FilmActeur FilmActeura { get; set; }
 	}
