@@ -47,7 +47,7 @@ namespace FilmDatabase.Controllers
 			producentFilm.ProducentId = producent.ProducentId;
 			_uow.FilmProducentRepository.Create(producentFilm);
 			await _uow.Save();
-			return RedirectToAction("Index", "Regisseur", new { area = "" });
+			return RedirectToAction("Index", "Home", new { area = "" });
 		}
 	}
 }

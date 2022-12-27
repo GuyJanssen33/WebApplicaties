@@ -35,7 +35,7 @@
 						<div class="cardbutton">
 							<a class="btn btn-primary cardbutton" asp-area="" asp-controller="Details" asp-action="Index" asp-route-id="@film.FilmId">Details  </a>
 						</div>
-						@if (User.IsInRole("admin") || User.IsInRole("Gebruiker"))
+						@if (User.IsInRole("admin") || User.IsInRole("user"))
 						{
 							<div class="cardbutton">
 								<a class="btn btn-warning cardbutton" asp-area="" asp-controller="Favorieten" asp-action="IndexAsync" asp-route-id="@film.FilmId">Favorieten </a>
