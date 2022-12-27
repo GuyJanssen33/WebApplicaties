@@ -37,6 +37,9 @@
 		@if (Model.Producenten == null)
 		{
 			<li>Er zijn nog geen producenten toegevoegd voor deze film</li>
+			<div class="btn">
+				<a type="button" asp-area="" asp-controller="ProducentToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">ProducentToevoegen</a>
+			</div>
 		}
 		else
 		{
