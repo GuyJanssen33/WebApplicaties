@@ -24,9 +24,7 @@
 			
 			@if (User.IsInRole("Admin"))
 			{
-				<li class="btn">
-					<a type="button" asp-area="" asp-controller="ActeurToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">Acteur Toevoegen</a>
-				</li>
+				<button type="button" class="btn btn-primary">Primary</button>
 			}
 		}
 		else
@@ -37,9 +35,7 @@
 			}
 			@if (User.IsInRole("Admin"))
 			{
-				<li class="btn">
-					<a type="button" asp-area="" asp-controller="ActeurToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">Acteur Toevoegen</a>
-				</li>
+				<button type="button" class="btn btn-primary">Primary</button>
 			}
 		}
 

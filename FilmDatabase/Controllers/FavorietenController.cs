@@ -22,15 +22,17 @@ namespace FilmDatabase.Controllers
 		{
 			_uow = uow;
 			_userManager = userManager;
-			List<Favoriet> favorieten = _uow.FavorietRepository.GetAll().ToList();
+			List<Favoriet> favorieten = _uow.FavorietRepository.GetAll().Include(x => x.Films).ToList();
 		}
 		
-		public async Task<IActionResult> IndexAsync(int id)
+		public async Task<IActionResult> Index(int id)
 		{
 			var ingelogdeUserId = await _userManager.FindByIdAsync(User.Identity.Name);
+			var UserId = int.Parse(ingelogdeUserId.Id);
+			var favorieten = _uow.FavorietRepository.GetAll().Include(x => x.Films).Where(x => x.CustomUserId ==UserId).ToList();
 
 			return View();
 		}
-
+		
 	}
 }
