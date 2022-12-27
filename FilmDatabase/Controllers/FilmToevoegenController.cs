@@ -43,7 +43,7 @@ namespace FilmDatabase.Controllers
 			_uow.FilmRepository.Create(Filmf);
 			await _uow.Save();
 			//return RedirectToAction("ActeurToevoegen.cshtml");
-			return RedirectToAction("Index", "ActeurToevoegen", new { area = "" });
+			return RedirectToAction("Index", "Home", new { area = "" });
 
 			//return View();
 		}

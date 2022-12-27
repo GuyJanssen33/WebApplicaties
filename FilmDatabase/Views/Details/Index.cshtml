@@ -21,12 +21,21 @@
 		@if (Model.Acteurs == null)
 		{
 			<li>Er zijn nog geen acteurs toegevoegd voor deze film</li>
+			
+			@if (User.IsInRole("Admin"))
+			{
+				<button type="button" class="btn btn-primary">Primary</button>
+			}
 		}
 		else
 		{
 			@foreach (var acteur in Model.Acteurs)
 			{
 				<li>@acteur.Voornaam @acteur.Familienaam</li>
+			}
+			@if (User.IsInRole("Admin"))
+			{
+				<button type="button" class="btn btn-primary">Primary</button>
 			}
 		}
 
@@ -37,6 +46,13 @@
 		@if (Model.Producenten == null)
 		{
 			<li>Er zijn nog geen producenten toegevoegd voor deze film</li>
+			@if(User.IsInRole("Admin"))
+			{
+				<li class="btn">
+				<a type="button" asp-area="" asp-controller="ProducentToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">ProducentToevoegen</a>
+				</li>
+			}
+			
 		}
 		else
 		{
@@ -44,6 +60,9 @@
 			{
 				<li>@producent.Voornaam @producent.Familienaam</li>
 			}
+			<li class="btn">
+				<a type="button" asp-area="" asp-controller="ProducentToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">ProducentToevoegen</a>
+			</li>
 		}
 	</h3>
 
@@ -52,6 +71,12 @@
 		@if (Model.Regisseurs == null)
 		{
 			<li>Er zijn nog geen regisseurs toegevoegd voor deze film</li>
+			@if(User.IsInRole("admin"))
+			{
+			<li class="btn">
+				<a type="button" asp-area="" asp-controller="RegisseurToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">Regisseur Toevoegen</a>
+			</li>
+			}
 		}
 		else
 		{
@@ -59,6 +84,10 @@
 			{
 				<li>@regisseur.Voornaam @regisseur.Familienaam</li>
 			}
+			
+			<li class="btn">
+				<a type="button" asp-area="" asp-controller="RegisseurToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">Regisseur Toevoegen</a>
+			</li>
 		}
 	</h3>
 
@@ -75,6 +104,7 @@
 		{
 
 			samenvatting = Model.Samenvatting;
+			
 
 		}
 		else
@@ -82,12 +112,13 @@
 			samenvatting = "Geen samenvatting beschikbaar";
 		}
 		Samenvatting: @samenvatting;
+		
 
 	</h3>
 
 
 
-	@if (User.IsInRole("gebruiker"))
+	@if (User.IsInRole("user"))
 	{
 		<div class="btn">
 			<a asp-action="EditFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Bewerk Film</a>
