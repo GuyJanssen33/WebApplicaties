@@ -2,6 +2,7 @@
 using FilmDatabase.Models;
 
 using FilmDatabase.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace FilmDatabase.Controllers
 {
+	[Authorize(Roles = "Admin")]
 	public class FilmToevoegenController : Controller
 	{
 

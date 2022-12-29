@@ -13,7 +13,7 @@ namespace FilmDatabase.Models
 			[Required]
 			public int FilmId { get; set; }
 			[Required]
-			public int CustomUserId { get; set; }
+			public string CustomUserId { get; set; }
 
 		//Navigation Properties
 			//[ForeignKey("CustomUserId")]

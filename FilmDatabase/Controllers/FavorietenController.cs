@@ -32,10 +32,26 @@ namespace FilmDatabase.Controllers
 		{
 			var user = await _userManager.GetUserAsync(HttpContext.User);
 			//var ingelogdeUserId = await _userManager.FindByIdAsync(User.Identity.Name);
-			
-			var UserId = int.Parse(User.Id);
-			var favorieten = _uow.FavorietRepository.GetAll().Include(x => x.Films).Where(x => x.CustomUserId ==UserId).ToList();
+			//var ingelogdeUserId = await _userManager.GetUserIdAsync(User);
+			var userid = user.Id.ToString();
+			FavorietenListViewModel vm = new FavorietenListViewModel();
+			vm.Favorieten = _uow.FavorietRepository.GetAll().Include(x => x.Films).Where( x => x.CustomUserId == userid).ToList();
 
+			if (vm.Favorieten.Count == 0)
+			{
+				Film film = _uow.FilmRepository.GetById(id);
+				Favoriet favoriet = new Favoriet();
+				favoriet.FilmId = film.FilmId;
+				favoriet.CustomUserId = userid;
+				vm.Favorieten.Add(favoriet);
+
+				return View(vm);
+			}
+			else
+			{
+				
+				return View(vm);
+			}
 			return View();
 		}
 		

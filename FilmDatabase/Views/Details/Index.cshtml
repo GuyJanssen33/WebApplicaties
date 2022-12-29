@@ -84,10 +84,13 @@
 			{
 				<li>@regisseur.Voornaam @regisseur.Familienaam</li>
 			}
-			
-			<li class="btn">
-				<a type="button" asp-area="" asp-controller="RegisseurToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">Regisseur Toevoegen</a>
-			</li>
+
+			@if (User.IsInRole("admin"))
+			{
+				<li class="btn">
+					<a type="button" asp-area="" asp-controller="RegisseurToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">Regisseur Toevoegen</a>
+				</li>
+			}
 		}
 	</h3>
 
