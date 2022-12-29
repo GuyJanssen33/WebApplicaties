@@ -43,12 +43,14 @@ namespace FilmDatabase.Controllers
 				Favoriet favoriet = new Favoriet();
 				favoriet.FilmId = film.FilmId;
 				favoriet.CustomUserId = userid;
+				_uow.FavorietRepository.Create(favoriet);
 				vm.Favorieten.Add(favoriet);
 
 				return View(vm);
 			}
 			else
 			{
+				vm.Favorieten = vm.Favorieten.Where(x => x.CustomUserId == userid).ToList(); ;
 				
 				return View(vm);
 			}
