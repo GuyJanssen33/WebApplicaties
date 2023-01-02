@@ -36,8 +36,8 @@ namespace FilmDatabase.Controllers
             favorietenListViewModel.User = user;
             return View(favorietenListViewModel);
         }
-
-        public async Task<IActionResult> AddFavoriet(int id)
+		
+        public async Task<IActionResult> AddFAvoriet(int id)
 		{
 			var user = await _userManager.GetUserAsync(HttpContext.User);
 			
@@ -81,13 +81,7 @@ namespace FilmDatabase.Controllers
 						return View(vm);
 					}
 				}
-				//Film film = _uow.FilmRepository.GetById(id);
-				//Favoriet favoriet = new Favoriet();
-				//favoriet.FilmId = film.FilmId;
-				//favoriet.CustomUserId = userid;
-				//_uow.FavorietRepository.Create(favoriet);
-				//vm.Favorieten.Add(favoriet);
-				//await _uow.Save();
+				
 				return View(vm);
 			}
 			

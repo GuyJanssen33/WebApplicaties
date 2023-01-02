@@ -35,9 +35,23 @@
                                 </li>
 
                             }
+							if (User.IsInRole("user"))
+							{
+								<li class="nav-item">
+									<a class="nav-link" asp-action="Index" asp-controller="Favorieten"> Favorieten</a>
+								</li>
+							}
+							
+                                
                             
+
+
                         }
-                       
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-primary" type="submit" style="color:royalblue">Search</button>
+                        </form>
+
                     </ul>
                   
                 </div>

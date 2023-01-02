@@ -19,6 +19,25 @@ namespace FilmDatabase.Controllers
 			_uow = uow;
 		}
 
+		public IActionResult AanpassenSamenvatting(int id)
+			{
+			Film film = _uow.FilmRepository.GetById(id);
+			FilmAanpassenViewModel vm = new FilmAanpassenViewModel()
+			{
+				FilmId = film.FilmId,
+				Titel = film.Titel,
+				Genre = film.Genre,
+				Lengte = film.Lengte,
+				Schrijver = film.Schrijver,
+				Samenvatting = film.Samenvatting,
+				ReleaseDatum = film.ReleaseDatum,
+				Verdeler = film.Verdeler,
+				Rating = film.Rating,
+				Poster = film.Poster,
+			};
+			return View(vm);
+		}
+
 		public IActionResult Index(int id)
 		{
 			Film film = _uow.FilmRepository.GetById(id);
@@ -41,30 +60,42 @@ namespace FilmDatabase.Controllers
 				Producenten = _context.Producent.Where(p => p.FilmProducenten.Any(fp => fp.FilmId == id)).ToList(),
 			};
 
-			DetailsViewModel vmd = new DetailsViewModel()
-			{
-				FilmId = film.FilmId,
-				Titel = film.Titel,
-				Genre = film.Genre,
-				Lengte = film.Lengte,
-				Schrijver = film.Schrijver,
-				Samenvatting = film.Samenvatting,
-				ReleaseDatum = film.ReleaseDatum,
-				Verdeler = film.Verdeler,
-				Rating = film.Rating,
-				Poster = film.Poster,
-			};
+			//DetailsViewModel vmd = new DetailsViewModel()
+			//{
+			//	FilmId = film.FilmId,
+			//	Titel = film.Titel,
+			//	Genre = film.Genre,
+			//	Lengte = film.Lengte,
+			//	Schrijver = film.Schrijver,
+			//	Samenvatting = film.Samenvatting,
+			//	ReleaseDatum = film.ReleaseDatum,
+			//	Verdeler = film.Verdeler,
+			//	Rating = film.Rating,
+			//	Poster = film.Poster,
+			//};
 
-			if ((vm.Acteurs.Count <= 0)|| (vm.Producenten.Count <= 0)||(vm.Regisseurs.Count <= 0))
+			if ((vm.Acteurs.Count <= 0) || (vm.Producenten.Count <= 0) || (vm.Regisseurs.Count <= 0))
 			{
-				return View(vmd);
+				return View(vm);
+			}
+			else
+			{
+				return View(vm);
 			}
 
-			return View(vm);
+			
 
 
 		}
 
+		public IActionResult UpdateFilm(Film filmf)
+		{
+			
+			_uow.FilmRepository.Update(filmf);
+			_uow.Save();
+
+			return RedirectToAction("Index", "Home", new {area = ""});
+		}
 
 		public IActionResult DeleteFilm(int id)
 		{
