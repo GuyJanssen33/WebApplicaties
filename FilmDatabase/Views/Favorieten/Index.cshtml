@@ -15,8 +15,8 @@
 		@foreach (var film in Model.Favorieten)
 		{
 
-			<div class="col-md-4">
-				<div class="card" style="width: 18rem; margin-bottom:5px;">
+			<div class="col-md-4" style="margin-bottom:10px">
+				<div class="card" style="width: 18rem; height:40rem">
 					<img src="@film.Films.Poster" class="card-img-top" alt="@film.Films.Poster">
 					<div class="card-body cardbutton">
 						<h5 class="card-title">@film.Films.Titel</h5>
@@ -24,9 +24,7 @@
 						<div class="cardbutton">
 							<a class="btn btn-primary cardbutton" asp-area="" asp-controller="Details" asp-action="Index" asp-route-id="@film.FilmId">Details  </a>
 						</div>
-						<div class="cardbutton">
-							<a class="btn btn-warning cardbutton" asp-area="" asp-controller="Favorieten" asp-action="AddFavoriet" asp-route-id="@film.FilmId">Add to Favorites</a>
-						</div>
+						
 					</div>
 				</div>
 			</div>

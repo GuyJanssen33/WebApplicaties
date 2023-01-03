@@ -1,7 +1,9 @@
 ﻿using FilmDatabase.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FilmDatabase.ViewModels
 {
@@ -13,7 +15,8 @@ namespace FilmDatabase.ViewModels
         public string Lengte { get; set; }
         public string Schrijver { get; set; }
         public string Samenvatting { get; set; }
-        public DateTime? ReleaseDatum { get; set; }
+		[BindProperty, DataType(DataType.Date)]
+		public DateTime? ReleaseDatum { get; set; }
         public string Verdeler { get; set; }
         public string? Rating { get; set; }
         public string? Poster { get; set; }

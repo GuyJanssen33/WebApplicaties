@@ -32,6 +32,11 @@ namespace FilmDatabase.Data.Repository
 			return _context.Set<TEntity>().Find(id);
 		}
 
+		public TEntity GetByTitle(string title)
+		{
+            return _context.Set<TEntity>().Find(title);
+        }
+
 		public TEntity GetLastEntry()
 		{
 			return _context.Set<TEntity>().OrderByDescending(x => x).FirstOrDefault();

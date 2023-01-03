@@ -12,7 +12,7 @@
 	<form asp-controller="FilmToevoegen" asp-action="AddFilm" method="post">
 		<div class="form-group">
 			<label asp-for="Titel"></label>
-			<input asp-for="Titel" class="form-control" />
+			<input asp-for="Titel" class="form-control"  />
 			<span asp-validation-for="Titel" class="text-danger"></span>
 		</div>
 		<div class="form-group">
@@ -27,7 +27,7 @@
 		</div>
 		<div class="form-group">
 			<label asp-for="Schrijver"></label>
-			<input asp-for="Schrijver" class="form-control" />
+			<input asp-for="Schrijver" class="form-control"  />
 			<span asp-validation-for="Schrijver" class="text-danger"></span>
 		</div>
 		<div class="form-group">
@@ -53,11 +53,11 @@
 		</div>
 		<div class="form-group">
 			<label asp-for="Poster"></label>
-			<input asp-for="Poster" class="form-control" />
+			<input asp-for="Poster" class="form-control"   />
 			<span asp-validation-for="Poster" class="text-danger"></span>
 		</div>
 		<div class="form-group">
-			<input type="submit" value="AddFilm" class="btn btn-primary"  />
+			<input type="submit" value="AddFilm" class="btn btn-primary" />
 		</div>
 	</form>
 </div>

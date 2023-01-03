@@ -6,6 +6,7 @@ namespace FilmDatabase.Data.Repository
 	{
 		IQueryable<TEntity> GetAll();
 		TEntity GetById(int id);
+		TEntity GetByTitle(string title);
 		TEntity GetLastEntry();
 		void Create(TEntity entity);
 		void Update(TEntity entity);

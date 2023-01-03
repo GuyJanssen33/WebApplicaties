@@ -1,0 +1,63 @@
+﻿@model FilmDatabase.ViewModels.FilmAanpassenViewModel
+
+
+@{
+	ViewData["Title"] = "Film Aanpassen";
+}
+
+<h1 class="title">@ViewData["Title"]</h1>
+
+
+<div class="container">
+	<form asp-controller="FilmToevoegen" asp-action="AddFilm" method="post">
+		<div class="form-group">
+			<label asp-for="Titel"></label>
+			<input asp-for="Titel" class="form-control" placeholder="@Model.Titel" />
+			<span asp-validation-for="Titel" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Genre"></label>
+			<input asp-for="Genre" class="form-control" placeholder="@Model.Genre" />
+			<span asp-validation-for="Genre" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Lengte"></label>
+			<input asp-for="Lengte" class="form-control" placeholder="@Model.Lengte" />
+			<span asp-validation-for="Lengte" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Schrijver"></label>
+			<input asp-for="Schrijver" class="form-control" placeholder="@Model.Schrijver"/>
+			<span asp-validation-for="Schrijver" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Samenvatting"></label>
+			<input asp-for="Samenvatting" class="form-control" placeholder="@Model.Samenvatting" />
+			<span asp-validation-for="Samenvatting" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="ReleaseDatum"></label>
+
+			<input type="date" asp-for="ReleaseDatum" class="form-control" placeholder="@Model.ReleaseDatum"/>
+			<span asp-validation-for="ReleaseDatum" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Verdeler"></label>
+			<input asp-for="Verdeler" class="form-control" placeholder="@Model.Verdeler" />
+			<span asp-validation-for="Verdeler" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Rating"></label>
+			<input asp-for="Rating" class="form-control" placeholder="@Model.Rating" />
+			<span asp-validation-for="Rating" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Poster"></label>
+			<input asp-for="Poster" class="form-control" placeholder="@Model.Poster" />
+			<span asp-validation-for="Poster" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<input type="submit" value="UpdateFilm" class="btn btn-primary" />
+		</div>
+	</form>
+</div>
