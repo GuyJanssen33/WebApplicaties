@@ -2,6 +2,7 @@
 using FilmDatabase.Models;
 
 using FilmDatabase.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace FilmDatabase.Controllers
 {
+	[Authorize(Roles = "admin")]
 	public class FilmToevoegenController : Controller
 	{
 
@@ -43,7 +45,7 @@ namespace FilmDatabase.Controllers
 			_uow.FilmRepository.Create(Filmf);
 			await _uow.Save();
 			//return RedirectToAction("ActeurToevoegen.cshtml");
-			return RedirectToAction("Index", "ActeurToevoegen", new { area = "" });
+			return RedirectToAction("Index", "Home", new { area = "" });
 
 			//return View();
 		}

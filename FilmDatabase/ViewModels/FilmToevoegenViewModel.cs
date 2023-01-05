@@ -8,6 +8,7 @@ namespace FilmDatabase.ViewModels
 	{
 		//public Film Filmf { get; set; }
 
+		
 		public string Titel { get; set; }
 		public string Genre { get; set; }
 		public string Lengte { get; set; }

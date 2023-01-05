@@ -4,19 +4,22 @@
 	ViewData["Title"] = "Details";
 }
 
-<h1>@Model.Voornaam @Model.Familienaam</h1>
+<div class="container">
+	<h1>@Model.Voornaam @Model.Familienaam</h1>
 
-<p>
-	Id: @Model.Id;
+	<p>
+		Id: @Model.Id;
 
-</p>
-<p>
-	Gebruikersnaam: @Model.UserName;
+	</p>
+	<p>
+		Gebruikersnaam: @Model.UserName;
 
-</p>
-<p>
-	Geboorte datum: @Model.Geboortedatum;
+	</p>
+	<p>
+		Geboorte datum: @Model.Geboortedatum;
 
-</p>
+	</p>
 
-@Html.ActionLink("Terug", "Index", "Gebruiker")
+	@Html.ActionLink("Terug", "Index", "Gebruiker")
+
+</div>

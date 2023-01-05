@@ -3,16 +3,18 @@
 @{
 	ViewData["Title"] = "Grant Permission";
 }
-
-<form asp-action="GrantPermissions" asp-method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <select asp-for="GebruikerId" asp-items="Model.Gebruikers"></select>
-    </div>
-    <div class="form-group">
-        <select asp-for="RolId" asp-items="Model.Rollen"></select>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
-    </div>
-</form>
+<div class="container">
+	<h2>Hier kan u rollen toewijzen aan een gebruiker.</h2>
+	<form asp-action="GrantPermissions" asp-method="post">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<div class="form-group">
+			<select asp-for="GebruikerId" asp-items="Model.Gebruikers"></select>
+		</div>
+		<div class="form-group">
+			<select asp-for="RolId" asp-items="Model.Rollen"></select>
+		</div>
+		<div class="form-group">
+			<input type="submit" value="Create" class="btn btn-primary" />
+		</div>
+	</form>
+</div>

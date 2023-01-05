@@ -27,15 +27,7 @@ namespace FilmDatabase.Controllers
 		public IActionResult Index()
 
 		{
-
-
 			ActeurToevoegenViewModel vm = new ActeurToevoegenViewModel();
-
-
-
-
-
-
 
 			return View(vm);
 		}
@@ -55,8 +47,13 @@ namespace FilmDatabase.Controllers
 			acteurFilm.ActeurId = acteur.ActeurId;
 			_uow.FilmActeurRepository.Create(acteurFilm);
 			await _uow.Save();
+			
 			return RedirectToAction("Index", "Home", new { area = "" });
 		}
 
+		public void ToWhatView()
+		{
+			
+		}
 	}
 }

@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css?version=1" />
 </head>
-<body>
+<body style="background-color:lightblue">
     <header style="background-color:lightblue">
-        <nav class="navbar navbar-expand-lg bg-light mystyle">
+        <nav class="navbar navbar-expand-lg bg-light mystyle" style="background-color:blueviolet">
             <div class="container-fluid ">
                 <a class="navbar-brand" href="#">Filmdatabase</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,11 +30,28 @@
                                 <li class="nav-item">
                                     <a class="nav-link" asp-action="Index" asp-controller="Gebruiker"> Gebruiker</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Favorieten"> Favorieten</a>
+                                </li>
 
                             }
+							if (User.IsInRole("user"))
+							{
+								<li class="nav-item">
+									<a class="nav-link" asp-action="Index" asp-controller="Favorieten"> Favorieten</a>
+								</li>
+							}
+							
+                                
                             
+
+
                         }
-                       
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="text" name="titel" placeholder="Zoek op Filmtitel" aria-label="Search" id="titel">
+                            <button class="btn btn-outline-primary" type="submit" style="color:royalblue" asp-area="" asp-controller="ZoekOpNaam" asp-action="ZoekOpNaam" asp-route-id="titel">Search</button>
+                        </form>
+
                     </ul>
                   
                 </div>
