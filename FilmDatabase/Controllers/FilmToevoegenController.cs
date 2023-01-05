@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FilmDatabase.Controllers
 {
-	[Authorize(Roles = "Admin")]
+	[Authorize(Roles = "admin")]
 	public class FilmToevoegenController : Controller
 	{
 
