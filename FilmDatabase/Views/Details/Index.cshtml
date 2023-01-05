@@ -2,137 +2,236 @@
 @{
 	ViewData["Title"] = @Model.Titel;
 }
-<div class="container">
+<div class="container text-center">
 	<h1>@ViewData["Title"]</h1>
-	<img src="@Model.Poster">
+	<img style="height:650px" src="@Model.Poster">
+	<div class="col-md-6; float-left" style="display:inline-block">
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Release datum:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.ReleaseDatum
+			</div>
 
-	<h3>Release datum: @Model.ReleaseDatum</h3>
+		</div>
 
-	<h3>Id: @Model.FilmId</h3>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Id:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.FilmId
+			</div>
+		</div>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Genre:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.Genre
+			</div>
+		</div>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Verdeler:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.Verdeler
+			</div>
+		</div>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Lengte:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.Lengte u
+			</div>
+		</div>
 
-	<h3>Genre: @Model.Genre</h3>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Rating:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.Rating
+			</div>
+		</div>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Schrijver:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.Schrijver
+			</div>
+		</div>
 
-	<h3>Verdeler: @Model.Verdeler</h3>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
 
-	<h3>Lengte: @Model.Lengte</h3>
+				<div style="font-weight:bold; display:inline-block">
+					<h3>Acteurs:</h3>
+				</div>
 
-	<h3>
-		Acteurs:
-		@if (Model.Acteurs == null)
-		{
-			<li>Er zijn nog geen acteurs toegevoegd voor deze film</li>
-			
-			@if (User.IsInRole("Admin"))
-			{
-				<button type="button" class="btn btn-primary">Primary</button>
-			}
-		}
-		else
-		{
-			@foreach (var acteur in Model.Acteurs)
-			{
-				<li>@acteur.Voornaam @acteur.Familienaam</li>
-			}
-			@if (User.IsInRole("Admin"))
-			{
-				<button type="button" class="btn btn-primary">Primary</button>
-			}
-		}
 
-	</h3>
+				@if (Model.Acteurs == null)
+				{
+					<div style="font-weight:lighter; text-indent:20px"></div>
 
-	<h3>
-		Producent:
-		@if (Model.Producenten == null)
-		{
-			<li>Er zijn nog geen producenten toegevoegd voor deze film</li>
-			@if(User.IsInRole("Admin"))
-			{
-				<li class="btn">
-				<a type="button" asp-area="" asp-controller="ProducentToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">ProducentToevoegen</a>
-				</li>
-			}
-			
-		}
-		else
-		{
-			@foreach (var producent in Model.Producenten)
-			{
-				<li>@producent.Voornaam @producent.Familienaam</li>
-			}
-			<li class="btn">
-				<a type="button" asp-area="" asp-controller="ProducentToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">ProducentToevoegen</a>
-			</li>
-		}
-	</h3>
+					<ul>
+						<li>Er zijn nog geen acteurs toegevoegd voor deze film</li>
+					</ul>
+				}
+				else
+				{
+					@foreach (var acteur in Model.Acteurs)
+					{
+						<div style="font-weight:lighter; text-indent:20px">
+							<ul>
+								<li style="text-indent:20px">@acteur.Voornaam @acteur.Familienaam</li>
+							</ul>
+						</div>
+					}
 
-	<h3>
-		Regisseur:
-		@if (Model.Regisseurs == null)
-		{
-			<li>Er zijn nog geen regisseurs toegevoegd voor deze film</li>
-			@if(User.IsInRole("admin"))
-			{
-			<li class="btn">
-				<a type="button" asp-area="" asp-controller="RegisseurToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">Regisseur Toevoegen</a>
-			</li>
-			}
-		}
-		else
-		{
-			@foreach (var regisseur in Model.Regisseurs)
-			{
-				<li>@regisseur.Voornaam @regisseur.Familienaam</li>
-			}
-			
-			<li class="btn">
-				<a type="button" asp-area="" asp-controller="RegisseurToevoegen" asp-action="Index" asp-route-id="@Model.FilmId" class="btn btn-primary">Regisseur Toevoegen</a>
-			</li>
-		}
-	</h3>
+				}
+			</div>
 
-	<h3>Rating: @Model.Rating</h3>
+		</div>
 
-	<h3>Schrijver: @Model.Schrijver</h3>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
 
-	<h3>
+				<div style="font-weight:bold; display:inline-block">
+					<h3>Producent(en):</h3>
+				</div>
 
-		@{
-			var samenvatting = "";
-		}
-		@if (!string.IsNullOrWhiteSpace(@Model.Samenvatting))
-		{
 
-			samenvatting = Model.Samenvatting;
-			
+				@if (Model.Producenten == null)
+				{
+					<div style="font-weight:lighter; text-indent:20px"></div>
 
-		}
-		else
-		{
-			samenvatting = "Geen samenvatting beschikbaar";
-		}
-		Samenvatting: @samenvatting;
+					<ul>
+						<li>Er zijn nog geen producenten toegevoegd voor deze film</li>
+					</ul>
+				}
+				else
+				{
+					@foreach (var producent in Model.Producenten)
+					{
+						<div style="font-weight:lighter; text-indent:20px">
+							<ul>
+								<li style="text-indent:20px">@producent.Voornaam @producent.Familienaam</li>
+							</ul>
+						</div>
+					}
+
+				}
+			</div>
+
+		</div>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+
+				<div style="font-weight:bold; display:inline-block">
+					<h3>Regisseur(s)</h3>
+				</div>
+
+
+				@if (Model.Regisseurs == null)
+				{
+					<div style="font-weight:lighter; text-indent:20px"></div>
+
+					<ul>
+						<li>Er zijn nog geen regisseurs toegevoegd voor deze film</li>
+					</ul>
+				}
+				else
+				{
+					@foreach (var regisseur in Model.Regisseurs)
+					{
+						<div style="font-weight:lighter; text-indent:20px">
+							<ul>
+								<li style="text-indent:20px">@regisseur.Voornaam @regisseur.Familienaam</li>
+							</ul>
+						</div>
+					}
+
+				}
+			</div>
+
+		</div>
+
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+
+				<div style="font-weight:bold; display:inline-block">
+					<h3>Samenvatting: </h3>
+				</div>
+
+				@{
+					var samenvatting = "";
+				}
+				@if (!string.IsNullOrWhiteSpace(@Model.Samenvatting))
+				{
+
+					samenvatting = Model.Samenvatting;
+
+
+				}
+				else
+				{
+					samenvatting = "Geen samenvatting beschikbaar";
+				}
+				<div style="font-weight:lighter; display:inline-block">
+					@samenvatting
+				</div>
+
+
+			</div>
+
+		</div>
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+@if (User.IsInRole("user"))
+{
+	<div style="text-align:center">
+		<div class="btn">
+			<a asp-action="AanpassenSamenvatting" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Bewerk Samenvatting</a>
+		</div>
+	</div>
+}
+
+@if (User.IsInRole("admin"))
+{
+	<div style="text-align:center">
+		<div class="btn" style="display:inline-block">
+			<a asp-action="EditFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Bewerk Film</a>
+		</div>
 		
-
-	</h3>
-
-
-
-	@if (User.IsInRole("user"))
-	{
-		<div class="btn">
-			<a asp-action="EditFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Bewerk Film</a>
+		<div class="btn" style="display:inline-block">
+			<a asp-action="Index" asp-controller="ActeurToevoegen"  asp-route-id="@Model.FilmId" class="btn btn-primary">Acteur toevoegen</a>
 		</div>
-	}
-	@if (User.IsInRole("admin"))
-	{
-		<div class="btn">
-			<a asp-action="EditFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Bewerk Film</a>
+		<div class="btn" style="display:inline-block">
+			<a asp-action="Index" asp-controller="ProducentToevoegen" asp-route-id="@Model.FilmId" class="btn btn-primary">Producent Toevoegen</a>
 		</div>
-		<div class="btn">
-			<a asp-action="DeleteFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Verwijder Film</a>
+		<div class="btn" style="display:inline-block">
+			<a asp-action="Index" asp-controller="RegisseurToevoegen"  asp-route-id="@Model.FilmId" class="btn btn-primary">Regisseur Toevoegen</a>
 		</div>
-	}
+		<div class="btn btn-danger" style="display:inline-block; ">
+			<a asp-action="DeleteFilm" asp-controller="Details" onclick="return confirm('Bent u zeker dat u deze film wil verwijderen? Deze actie kan niet ongedaan gemaakt worden!');" asp-route-id="@Model.FilmId" class="btn btn-danger">Verwijder Film</a>
+		</div>
+	</div>
+}
 
 </div>
 

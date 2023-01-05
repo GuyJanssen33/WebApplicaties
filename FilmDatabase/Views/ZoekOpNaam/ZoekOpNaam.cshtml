@@ -1,0 +1,95 @@
+﻿@model FilmDatabase.ViewModels.ZoekOpNaamViewModel
+
+
+@{
+	ViewData["Title"] = "Gezochte film";
+}
+
+<div class="container text-center">
+	<h1>@ViewData["Title"]</h1>
+	<img style="height:650px" src="@Model.Poster">
+	<div class="col-md-6; float-left" style="display:inline-block">
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Release datum:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.ReleaseDatum
+			</div>
+
+		</div>
+		
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Id:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.FilmId
+			</div>
+		</div>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Genre:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.Genre
+			</div>
+		</div>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Verdeler:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.Verdeler
+			</div>
+		</div>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Lengte:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.Lengte u
+			</div>
+		</div>
+
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Rating:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.Rating
+			</div>
+		</div>
+		<div style="text-align:left">
+			<div style="font-weight:bold; display:inline-block">
+				<h3>Schrijver:</h3>
+			</div>
+			<div style="font-weight:lighter; display:inline-block">
+				@Model.Schrijver
+			</div>
+		</div>
+	</div>
+
+	@if (User.IsInRole("user"))
+	{
+		<div style="text-align:center">
+			<div class="btn">
+				<a asp-action="AanpassenSamenvatting" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Bewerk Samenvatting</a>
+			</div>
+		</div>
+	}
+
+	@if (User.IsInRole("admin"))
+	{
+		<div style="text-align:center">
+			<div class="btn" style="display:inline-block">
+				<a asp-action="EditFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Bewerk Film</a>
+			</div>
+			<div class="btn" style="display:inline-block">
+				<a asp-action="DeleteFilm" asp-controller="Details" asp-route-id="@Model.FilmId" class="btn btn-primary">Verwijder Film</a>
+			</div>
+		</div>
+	}
+
+
+</div>

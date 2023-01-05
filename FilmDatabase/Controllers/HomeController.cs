@@ -18,26 +18,35 @@ namespace FilmDatabase.Controllers
 		private readonly FilmdatabaseDbContext _context;
 		private readonly IUnitOfWork _uow;
 
-		public HomeController(ILogger<HomeController> logger,IUnitOfWork uow )
+		public HomeController(ILogger<HomeController> logger, IUnitOfWork uow)
 		{
 			_logger = logger;
 			_uow = uow;
 		}
 
-		
+
 
 		public IActionResult Index()
-			
+
 		{
-			FilmListViewModel vm = new FilmListViewModel();
-				
+			try
+			{
+				FilmListViewModel vm = new FilmListViewModel();
+
 				vm.Films = _uow.FilmRepository.GetAll().ToList();
-			
-			return View(vm);
+
+				return View(vm);
+			}
+			catch (Exception)
+			{
+
+				throw new Exception("Er is iets misgegaan bij het laden van de site, probeer later opnieuw");
+			}
+
 		}
-			
-			
-		
+
+
+
 
 		public IActionResult Privacy()
 		{

@@ -1,0 +1,34 @@
+﻿@model FilmDatabase.ViewModels.FavorietenListViewModel
+@{
+	ViewData["Title"] = "Mijn Favorieten";
+}
+
+<div class="container mystyle">
+	<h1 class="title">@ViewData["Title"]</h1>
+
+
+
+	<div class="row">
+
+
+
+		@foreach (var film in Model.Favorieten)
+		{
+
+			<div class="col-md-4">
+				<div class="card" style="width: 18rem; margin-bottom:5px;">
+					<img src="@film.Films.Poster" class="card-img-top" alt="@film.Films.Poster">
+					<div class="card-body cardbutton">
+						<h5 class="card-title">@film.Films.Titel</h5>
+						<p class="card-text">@film.Films.Samenvatting</p>
+						<div class="cardbutton">
+							<a class="btn btn-primary cardbutton" asp-area="" asp-controller="Details" asp-action="Index" asp-route-id="@film.FilmId">Details  </a>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		}
+
+	</div>
+</div>

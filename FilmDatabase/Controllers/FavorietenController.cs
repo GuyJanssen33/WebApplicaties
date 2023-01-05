@@ -27,16 +27,64 @@ namespace FilmDatabase.Controllers
 			List<Favoriet> favorieten = _uow.FavorietRepository.GetAll().Include(x => x.Films).ToList();
 		}
 
+        public async Task<IActionResult> Index()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var favorieten = _uow.FavorietRepository.GetAll().Include(x => x.Films).Where(x => x.CustomUserId == user.Id).ToList();
+            FavorietenListViewModel favorietenListViewModel = new FavorietenListViewModel();
+            favorietenListViewModel.Favorieten = favorieten;
+            favorietenListViewModel.User = user;
+            return View(favorietenListViewModel);
+        }
 		
-		public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> AddFAvoriet(int id)
 		{
 			var user = await _userManager.GetUserAsync(HttpContext.User);
-			//var ingelogdeUserId = await _userManager.FindByIdAsync(User.Identity.Name);
 			
-			var UserId = int.Parse(User.Id);
-			var favorieten = _uow.FavorietRepository.GetAll().Include(x => x.Films).Where(x => x.CustomUserId ==UserId).ToList();
+			
+			var userid = user.Id.ToString();
+			FavorietenListViewModel vm = new FavorietenListViewModel();
+			vm.Favorieten = _uow.FavorietRepository.GetAll().Include(x => x.Films).Where( x => x.CustomUserId == userid).ToList();
+			vm.User = user;
+			if (vm.Favorieten.Count == 0)
+			{
+				Film film = _uow.FilmRepository.GetById(id);
+				Favoriet favoriet = new Favoriet();
+				vm.Favorieten = new List<Favoriet>();
+				
+				favoriet.FilmId = film.FilmId;
+				favoriet.CustomUserId = userid;
+				_uow.FavorietRepository.Create(favoriet);
+				vm.Favorieten.Add(favoriet);
+				await _uow.Save();
 
-			return View();
+				return View(vm);
+			}
+			else
+			{
+				Film film = _uow.FilmRepository.GetById(id);
+				
+				foreach (var item in vm.Favorieten)
+				{
+					if (item.FilmId == film.FilmId)
+					{
+						return View(vm);
+					}
+					else
+					{
+						Favoriet favoriet = new Favoriet();
+						favoriet.FilmId = film.FilmId;
+						favoriet.CustomUserId = userid;
+						_uow.FavorietRepository.Create(favoriet);
+						vm.Favorieten.Add(favoriet);
+						await _uow.Save();
+						return View(vm);
+					}
+				}
+				
+				return View(vm);
+			}
+			
 		}
 		
 	}

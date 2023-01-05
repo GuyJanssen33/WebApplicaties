@@ -1,5 +1,6 @@
 ﻿using FilmDatabase.Areas.Identity.Data;
 using FilmDatabase.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FilmDatabase.Controllers
 {
-	
+	[Authorize(Roles ="admin")]
 	public class GebruikerController : Controller
 	{
 		private UserManager<CustomUser> _userManager;

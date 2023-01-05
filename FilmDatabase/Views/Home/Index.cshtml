@@ -4,9 +4,9 @@
 }
 
 
-<div class="container mystyle">
+<div class="container " style="background-color:lightblue">
 	<div class="text-center">
-		
+
 
 		@if (User.IsInRole("admin"))
 		{
@@ -30,17 +30,20 @@
 				<div class="card" style="width: 18rem; height: 40rem">
 					<img src="@film.Poster" class="card-img-top" alt="@film.Poster">
 					<div class="card-body cardbutton">
-						<h5 class="card-title">@film.Titel</h5>
+						<h5 class="card-title" style="font-style:italic">@film.Titel</h5>
 						<p class="card-text">@film.Samenvatting</p>
-						<div class="cardbutton">
-							<a class="btn btn-primary cardbutton" asp-area="" asp-controller="Details" asp-action="Index" asp-route-id="@film.FilmId">Details  </a>
-						</div>
-						@if (User.IsInRole("admin") || User.IsInRole("user"))
-						{
-							<div class="cardbutton">
-								<a class="btn btn-warning cardbutton" asp-area="" asp-controller="Favorieten" asp-action="Index" asp-route-id="@film.FilmId">Favorieten </a>
+						
+							<div class="cardbutton" >
+								<a class="btn btn-primary cardbutton" asp-area="" asp-controller="Details" asp-action="Index" asp-route-id="@film.FilmId">Details  </a>
 							</div>
-						}
+							@if (User.IsInRole("admin") || User.IsInRole("user"))
+							{
+								<div class="cardbutton" style="margin: 5px">
+									<a class="btn btn-warning cardbutton" asp-area="" asp-controller="Favorieten" asp-action="AddFavoriet" asp-route-id="@film.FilmId">Favorieten </a>
+								</div>
+
+							}
+						
 					</div>
 				</div>
 			</div>

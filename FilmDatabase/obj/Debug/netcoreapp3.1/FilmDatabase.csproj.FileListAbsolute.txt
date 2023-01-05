@@ -260,3 +260,7 @@ C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_
 C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\Razor\Views\ActeurToevoegen\ActeurToevoegenView.cshtml.g.cs
 C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\Razor\Views\ProducentToevoegen\ProducentToevoegenView.cshtml.g.cs
 C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\Razor\Views\RegisseurToevoegen\Index.cshtml.g.cs
+C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\Razor\Views\Favorieten\AddFavoriet.cshtml.g.cs
+C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\Razor\Views\Details\AanpassenSamenvatting.cshtml.g.cs
+C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\Razor\Views\Details\EditFilm.cshtml.g.cs
+C:\Users\guyja\Documents\MEGAsync\sch_prog\Webapplicaties\Project\WebApplicatie_GuyJanssen_r0237357\WebApplicaties\FilmDatabase\obj\Debug\netcoreapp3.1\Razor\Views\ZoekOpNaam\ZoekOpNaam.cshtml.g.cs

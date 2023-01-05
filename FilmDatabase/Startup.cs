@@ -33,7 +33,7 @@ namespace FilmDatabase
 			services.AddControllersWithViews();
 			services.AddDbContext<FilmdatabaseDbContext>(options =>
 			
-				options.UseSqlServer(Configuration.GetConnectionString("LocalDBConnection")));
+				options.UseSqlServer(Configuration.GetConnectionString("FilmdatabaseConnection")));
 			services.AddDefaultIdentity<CustomUser>()
 					.AddRoles<IdentityRole>()
 					.AddEntityFrameworkStores<FilmdatabaseDbContext>();
